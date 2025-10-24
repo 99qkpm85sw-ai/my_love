@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Для Ваньки 💖</title>
+<!-- Подключаем шрифт Dancing Script -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 <style>
     body {
         margin: 0;
@@ -117,6 +119,18 @@
         cursor: pointer;
         z-index: 20;
     }
+
+    /* Надпись внизу сайта */
+    .footer-text {
+        font-family: 'Dancing Script', cursive;
+        font-size: 3em;
+        margin: 50px 0 30px 0;
+        color: #fff;
+        text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        opacity: 0;
+        animation: fadeIn 3s forwards;
+        animation-delay: 3s;
+    }
 </style>
 </head>
 <body>
@@ -146,11 +160,11 @@
     </div>
     <div class="photo">
         <img src="foto4.png" alt="Новое фото">
-        <div class="caption">Встреча после долгой разлуки</div>
+        <div class="caption">Наша прогулка в парке</div>
     </div>
     <div class="photo">
         <img src="foto5.png" alt="Новое фото">
-        <div class="caption">Поездка на дачу</div>
+        <div class="caption">Наши забавные моменты</div>
     </div>
 </div>
 
@@ -160,6 +174,11 @@
     <source src="music.mp3" type="audio/mpeg">
     Ваш браузер не поддерживает аудио
 </audio>
+
+<!-- Надпись внизу -->
+<div class="footer-text">
+    Love story
+</div>
 
 <script>
 // Плавающие сердечки
