@@ -88,9 +88,10 @@
         to {opacity: 1;}
     }
 
-    /* Падающие сердечки */
+    /* Падающие сердечки с самого верха */
     .floating-heart {
         position: absolute;
+        top: -50px; /* старт с самого верха */
         font-size: 1.5em;
         animation: fall linear infinite;
         z-index: 1;
@@ -98,7 +99,7 @@
     }
 
     @keyframes fall {
-        0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+        0% { transform: translateY(0) rotate(0deg); opacity: 1; }
         100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
     }
 
@@ -145,11 +146,11 @@
     </div>
     <div class="photo">
         <img src="foto4.png" alt="Новое фото">
-        <div class="caption">Наша встреча после долгой разлуки</div>
+        <div class="caption">Наша прогулка в парке</div>
     </div>
     <div class="photo">
         <img src="foto5.png" alt="Новое фото">
-        <div class="caption">Поездка на дачу</div>
+        <div class="caption">Наши забавные моменты</div>
     </div>
 </div>
 
