@@ -11,12 +11,15 @@
         color: #fff;
         text-align: center;
         overflow-x: hidden;
+        position: relative;
     }
 
     .heart {
         font-size: 4em;
         margin-top: 30px;
         animation: heartbeat 1.5s infinite;
+        z-index: 10;
+        position: relative;
     }
 
     @keyframes heartbeat {
@@ -31,6 +34,8 @@
         margin-top: 10px;
         opacity: 0;
         animation: fadeIn 2s forwards;
+        position: relative;
+        z-index: 10;
     }
 
     p {
@@ -41,6 +46,8 @@
         opacity: 0;
         animation: fadeIn 2s forwards;
         animation-delay: 2s;
+        position: relative;
+        z-index: 10;
     }
 
     .gallery {
@@ -48,6 +55,8 @@
         flex-wrap: wrap;
         justify-content: center;
         margin-top: 40px;
+        position: relative;
+        z-index: 10;
     }
 
     .photo {
@@ -78,6 +87,35 @@
     @keyframes fadeIn {
         to {opacity: 1;}
     }
+
+    /* Падающие сердечки */
+    .floating-heart {
+        position: absolute;
+        font-size: 1.5em;
+        animation: fall linear infinite;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    @keyframes fall {
+        0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* Кнопка музыки */
+    #musicControl {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        background: rgba(255,255,255,0.2);
+        border: none;
+        color: #fff;
+        font-size: 1em;
+        padding: 8px 12px;
+        border-radius: 8px;
+        cursor: pointer;
+        z-index: 20;
+    }
 </style>
 </head>
 <body>
@@ -105,14 +143,50 @@
         <img src="foto3.png" alt="Путешествие">
         <div class="caption">Наша поездка в Питер</div>
     </div>
-    <!-- Новые фотографии без подписей -->
     <div class="photo">
         <img src="foto4.png" alt="Новое фото">
+        <div class="caption">Наша встреча после долгой разлуки</div>
     </div>
     <div class="photo">
         <img src="foto5.png" alt="Новое фото">
+        <div class="caption">Поездка на дачу</div>
     </div>
 </div>
+
+<!-- Кнопка музыки -->
+<button id="musicControl">▶️ Включить музыку</button>
+<audio id="music" loop>
+    <source src="music.mp3" type="audio/mpeg">
+    Ваш браузер не поддерживает аудио
+</audio>
+
+<script>
+// Плавающие сердечки
+const colors = ['#ff8dc7','#ff5c8a','#ffb6c1','#ff69b4','#ff1493'];
+for(let i=0;i<30;i++){
+    const heart = document.createElement('div');
+    heart.classList.add('floating-heart');
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = (5 + Math.random()*5) + 's';
+    heart.style.fontSize = (15 + Math.random()*20) + 'px';
+    heart.style.color = colors[Math.floor(Math.random()*colors.length)];
+    heart.textContent = '💖';
+    document.body.appendChild(heart);
+}
+
+// Музыка
+const music = document.getElementById('music');
+const btn = document.getElementById('musicControl');
+btn.addEventListener('click', ()=>{
+    if(music.paused){
+        music.play();
+        btn.textContent = '⏸️ Пауза';
+    } else {
+        music.pause();
+        btn.textContent = '▶️ Включить музыку';
+    }
+});
+</script>
 
 </body>
 </html>
